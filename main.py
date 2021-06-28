@@ -56,7 +56,7 @@ def delete_user(token: str, user_id: int):
 
 @app.get("/posts", response_model=List[PostRetrieveSchema])
 def all_posts():
-    posts = Post.objects(id=1).first()
+    posts = Post.objects(id=1)
     return posts
 
 
