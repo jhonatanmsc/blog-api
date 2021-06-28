@@ -10,14 +10,15 @@ class UserSchema(BaseModel):
     address: dict
     social_networks: list
 
+    class Config:
+        orm_mode = True
+
 
 class PostSchema(BaseModel):
     lang: str
     title: str
     subtitle: Optional[str] = None
     description: str
-    created_at: datetime
-    update_at: datetime
 
 
 class UserRetrieveSchema(UserSchema):
@@ -30,6 +31,8 @@ class UserUpdateSchema(UserSchema):
 
 class PostRetrieveSchema(PostSchema):
     id: int
+    created_at: datetime
+    update_at: datetime
 
 
 class PostUpdateSchema(PostSchema):
@@ -38,12 +41,14 @@ class PostUpdateSchema(PostSchema):
 
 class PostResumeRetrieveSchema(PostSchema):
     id: int
+    created_at: datetime
+    update_at: datetime
     company_image: Optional[str] = None
     begin_date: date
     end_date: date
 
 
-class PostResumeUpdateSchema(BaseModel):
+class PostResumeUpdateSchema(PostSchema):
     company_image: Optional[str] = None
     begin_date: date
     end_date: date
