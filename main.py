@@ -85,7 +85,7 @@ def delete_post(token, post_id):
 
 
 @app.get("/posts-resume", response_model=List[PostResumeRetrieveSchema])
-def all_posts():
+def all_posts_resume():
     return PostResume.objects()
 
 
